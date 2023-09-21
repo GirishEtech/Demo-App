@@ -1,6 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentHome">
 
+    <fragment
+        android:id="@+id/fragmentHome"
+        android:name="com.example.demoapp.Fragments.FragmentHome"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentDetail"
+            app:destination="@id/fragmentDetail" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentTodo"
+            app:destination="@id/fragmentTodo" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentTodo2"
+            app:destination="@id/fragmentTodo" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentGallary"
+        android:name="com.example.demoapp.Fragments.FragmentGallary"
+        android:label="fragment_gallary"
+        tools:layout="@layout/fragment_gallary" >
+        <action
+            android:id="@+id/action_fragmentGallary_to_fragmentGallaryDetail2"
+            app:destination="@id/fragmentGallaryDetail" />
+        <action
+            android:id="@+id/action_fragmentGallary_to_fragmentTodo"
+            app:destination="@id/fragmentTodo" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentTodo"
+        android:name="com.example.demoapp.Fragments.FragmentTodo"
+        android:label="fragment_todo"
+        tools:layout="@layout/fragment_todo" />
+    <fragment
+        android:id="@+id/fragmentDetail"
+        android:name="com.example.demoapp.Fragments.FragmentDetail"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_fragmentDetail_to_fragmentHome"
+            app:destination="@id/fragmentHome" />
+        <action
+            android:id="@+id/action_fragmentDetail_to_fragmentTodo"
+            app:destination="@id/fragmentTodo" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentGallaryDetail"
+        android:name="com.example.demoapp.Fragments.FragmentGallaryDetail"
+        android:label="fragment_gallary_detail"
+        tools:layout="@layout/fragment_gallary_detail" >
+        <action
+            android:id="@+id/action_fragmentGallaryDetail_to_fragmentGallary"
+            app:destination="@id/fragmentGallary" />
+        <action
+            android:id="@+id/action_fragmentGallaryDetail_to_fragmentTodo"
+            app:destination="@id/fragmentTodo" />
+    </fragment>
 </navigation>
