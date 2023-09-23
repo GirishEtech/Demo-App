@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/AppbarLayout"
@@ -24,6 +24,7 @@
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp"
                 android:background="@drawable/back_icon"
+                android:visibility="invisible"
                 />
             <TextView
                 android:id="@+id/txtTitle"
@@ -39,19 +40,17 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.fragment.app.FragmentContainerView
+    <FrameLayout
         android:id="@+id/fragmentContainerView2"
-        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/AppbarLayout"
-        app:navGraph="@navigation/nav_graph" />
+        app:layout_constraintTop_toBottomOf="@id/AppbarLayout" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/Buttom_navigation"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_50sdp"
         android:layout_margin="20sp"
