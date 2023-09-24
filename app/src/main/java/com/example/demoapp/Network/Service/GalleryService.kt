@@ -1,10 +1,11 @@
 package com.example.demoapp.Network.Service
 
 import com.example.demoapp.Network.Models.GallaryResponse
-import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.GET
 
-interface GallaryService {
+interface GalleryService {
     @GET("/photos")
-    suspend fun getGallaryData(): Call<GallaryResponse>
+    fun getAllGalleryData(): Response<GallaryResponse>
+
 }

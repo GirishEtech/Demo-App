@@ -29,14 +29,14 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     buildFeatures {
         viewBinding = true
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 
@@ -51,7 +51,7 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation ("androidx.test.espresso:espresso-core:3.4.0")
 
-    val hilt_version="2.38.1"
+    val hilt_version="2.48"
     implementation ("com.google.dagger:hilt-android:$hilt_version")
     kapt ("com.google.dagger:hilt-compiler:$hilt_version")
 
@@ -62,7 +62,7 @@ dependencies {
     val retrofit_version = "2.9.0"
     implementation ("com.squareup.retrofit2:retrofit:$retrofit_version")
     implementation ("com.squareup.retrofit2:converter-gson:$retrofit_version")
-    implementation ("com.squareup.okhttp3:okhttp:4.9.3")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 
     val room_version = "2.4.2"
     implementation ("androidx.room:room-runtime:$room_version")
@@ -77,7 +77,8 @@ dependencies {
     implementation ("androidx.navigation:navigation-fragment-ktx:$navigation_version")
     implementation ("androidx.navigation:navigation-ui-ktx:$navigation_version")
 
-
+    // image loading library
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 
     // size Library Responsive
     implementation("com.intuit.ssp:ssp-android:1.1.0")

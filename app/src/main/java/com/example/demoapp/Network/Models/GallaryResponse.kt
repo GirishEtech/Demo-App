@@ -1,3 +1,3 @@
 package com.example.demoapp.Network.Models
 
-class GallaryResponse : ArrayList<GallaryResponseItem>()
+data class GallaryResponse(val gallaryList: ArrayList<GallaryResponseItem>)

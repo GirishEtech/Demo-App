@@ -3,21 +3,20 @@ package com.example.demoapp.ViewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.demoapp.Network.Models.GallaryResponse
 import com.example.demoapp.Network.Models.HomeResponse
-import com.example.demoapp.Repository.productRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
+import com.example.demoapp.Repository.gallaryRepository
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltViewModel
-class ProductviewModel @Inject constructor(private val repository: productRepository) :
+class GalleryViewmodel @Inject constructor(private val repository: gallaryRepository) :
     ViewModel() {
+    val gallaryList: LiveData<GallaryResponse>
+        get() = repository.gallaryData
 
-    val productList: LiveData<HomeResponse>
-        get() = repository.prodcuts
     init {
         viewModelScope.launch {
-            repository.getAllproducts()
+            repository.getAllGallaryData()
         }
     }
 }

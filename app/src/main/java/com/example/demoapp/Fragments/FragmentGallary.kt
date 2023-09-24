@@ -1,22 +1,56 @@
 package com.example.demoapp.Fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.example.demoapp.Adapters.GallaryAdapter
+import com.example.demoapp.Adapters.ProductAdapter
+import com.example.demoapp.MyApplication
 import com.example.demoapp.R
+import com.example.demoapp.Utils.Constans
+import com.example.demoapp.ViewModelFactory.MainViewmodelFactory
+import com.example.demoapp.ViewModelFactory.gallaryViewmodelFactory
+import com.example.demoapp.ViewModels.GalleryViewmodel
+import com.example.demoapp.ViewModels.ProductviewModel
+import com.example.demoapp.databinding.FragmentGallaryBinding
+import javax.inject.Inject
 
 
 class FragmentGallary : Fragment() {
 
+    lateinit var _binding: FragmentGallaryBinding
+    private val binding: FragmentGallaryBinding
+        get() = _binding
+    lateinit var viewModel: GalleryViewmodel
+    lateinit var adapter: GallaryAdapter
+
+    @Inject
+    lateinit var viewModelFactory: gallaryViewmodelFactory
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Toast.makeText(requireContext(), "Fragment Gallery", Toast.LENGTH_SHORT).show()
-        return inflater.inflate(R.layout.fragment_gallary, container, false)
+//        _binding = FragmentGallaryBinding.inflate(inflater, container, false)
+//        (requireActivity().application as MyApplication).component.inject(requireActivity())
+//        viewModel = ViewModelProvider(this, viewModelFactory)[GalleryViewmodel::class.java]
+//
+//        viewModel.gallaryList.observe(viewLifecycleOwner) {
+//
+//            try {
+//                Log.d(Constans.TAG, it.gallaryList.toString())
+//                adapter = GallaryAdapter(it.gallaryList)
+//                binding.gallaryList.adapter = adapter
+//            } catch (ex: Exception) {
+//                Toast.makeText(requireContext(), ex.message.toString(), Toast.LENGTH_SHORT)
+//                    .show()
+//            }
+//        }
+        return binding.root
     }
 
 }
