@@ -6,11 +6,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.demoapp.Adapters.ProductAdapter
 import com.example.demoapp.MyApplication
+import com.example.demoapp.R
 import com.example.demoapp.Utils.Constans
 import com.example.demoapp.ViewModelFactory.MainViewmodelFactory
 import com.example.demoapp.ViewModels.ProductviewModel

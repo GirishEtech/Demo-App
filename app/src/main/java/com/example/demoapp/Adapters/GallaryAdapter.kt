@@ -4,11 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.demoapp.Network.Models.GallaryResponseItem
+import com.example.demoapp.Network.Models.GallaryResposeItem
 import com.example.demoapp.databinding.GallaryListBinding
-import com.example.demoapp.databinding.ProductListBinding
 
-class GallaryAdapter(private val listData: List<GallaryResponseItem>) :
+class GallaryAdapter(private val listData: ArrayList<GallaryResposeItem>) :
     RecyclerView.Adapter<GallaryAdapter.Holder>() {
 
     inner class Holder(val binding: GallaryListBinding) : RecyclerView.ViewHolder(binding.root) {

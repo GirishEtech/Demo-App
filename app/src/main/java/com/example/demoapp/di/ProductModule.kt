@@ -2,6 +2,7 @@ package com.example.demoapp.di
 
 import com.example.demoapp.Network.Service.GalleryService
 import com.example.demoapp.Network.Service.ProductService
+import com.example.demoapp.Utils.Constans.BASE_GALLARY
 import com.example.demoapp.Utils.Constans.BASE_PRODUCT
 import dagger.Module
 import dagger.Provides
@@ -19,8 +20,7 @@ class ProductModule {
 
     @Singleton
     @Provides
-    fun provideProductsRetrofit(): Retrofit {
-
+    fun provideProductsRetrofit(): ProductService {
         val interceptor = HttpLoggingInterceptor()
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         val client = OkHttpClient.Builder()
@@ -30,14 +30,23 @@ class ProductModule {
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BASE_PRODUCT)
-            .build()
+            .build().create(ProductService::class.java)
     }
 
 
     @Singleton
     @Provides
-    fun ProvidesProductApi(productRetorfit: Retrofit): ProductService {
-        return productRetorfit.create(ProductService::class.java)
+    fun ProvidesGalleryApi(): GalleryService {
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+        val client = OkHttpClient.Builder()
+            .addInterceptor(interceptor)
+            .build()
+        return Retrofit.Builder()
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BASE_GALLARY)
+            .build().create(GalleryService::class.java)
     }
 
 }

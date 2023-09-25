@@ -4,20 +4,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.demoapp.R
+import com.example.demoapp.databinding.FragmentTodoBinding
 
 class FragmentTodo : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    lateinit var _binding: FragmentTodoBinding
+    private val binding: FragmentTodoBinding
+        get() = _binding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Toast.makeText(requireContext(), "Fragment Todo", Toast.LENGTH_SHORT).show()
-        return inflater.inflate(R.layout.fragment_todo, container, false)
+        _binding = FragmentTodoBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
 

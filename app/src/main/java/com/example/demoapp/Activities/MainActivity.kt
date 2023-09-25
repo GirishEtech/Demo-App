@@ -1,6 +1,7 @@
 package com.example.demoapp.Activities
 
 import android.os.Bundle
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -9,6 +10,7 @@ import com.example.demoapp.Fragments.FragmentHome
 import com.example.demoapp.Fragments.FragmentTodo
 import com.example.demoapp.R
 import com.example.demoapp.databinding.ActivityMainBinding
+import com.google.android.material.appbar.MaterialToolbar
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -18,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     private val binding: ActivityMainBinding
         get() = _binding
 
+    private var actionBar:MaterialToolbar?= null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
@@ -27,6 +30,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun initComponents() {
         initNavigation()
+        actionBar = binding.toolbar
+        setSupportActionBar(actionBar)
         loadFragment(FragmentHome(), "HomeFragment")
     }
 
@@ -36,15 +41,19 @@ class MainActivity : AppCompatActivity() {
             val transaction = supportFragmentManager.beginTransaction()
             when (it.itemId) {
                 R.id.buttom_home -> {
-                    showFragment(transaction, "HomeFragment");
+                    showFragment(transaction, "HomeFragment")
+                    actionBar!!.title = "Product List"
                 }
 
                 R.id.buttom_gallary -> {
-                    showFragment(transaction, "GalleryFragment");
+                    showFragment(transaction, "GalleryFragment")
+                    actionBar!!.title = "Gallery"
                 }
 
                 R.id.buttom_todo -> {
-                    showFragment(transaction, "ToDoFragment");
+                    showFragment(transaction, "ToDoFragment")
+                    actionBar!!.title = "Todo"
+
                 }
             }
             true

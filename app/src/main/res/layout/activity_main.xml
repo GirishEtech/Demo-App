@@ -18,24 +18,12 @@
             android:id="@+id/toolbar"
             style="@style/Widget.Material3.CollapsingToolbar.Medium"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize">
+            android:layout_height="?attr/actionBarSize"
+            app:titleCentered="true"
+            app:title="Product List"
+            app:titleTextAppearance="@style/textStyle1"
+            >
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"
-                android:background="@drawable/back_icon"
-                android:visibility="invisible"
-                />
-            <TextView
-                android:id="@+id/txtTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/font"
-                android:text="Product List"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_25ssp"
-                android:textStyle="normal" />
         </com.google.android.material.appbar.MaterialToolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -44,6 +32,7 @@
         android:id="@+id/fragmentContainerView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_20sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
