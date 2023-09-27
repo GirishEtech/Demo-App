@@ -10,7 +10,7 @@
         android:layout_height="@dimen/_95sdp"
         android:layout_margin="@dimen/_12ssp"
         android:background="@drawable/bg_card2"
-        android:elevation="@dimen/_50sdp"
+        android:elevation="@dimen/_40sdp"
         android:paddingBottom="@dimen/_5sdp"
         app:cardCornerRadius="@dimen/_18sdp"
         app:cardElevation="@dimen/_10sdp"

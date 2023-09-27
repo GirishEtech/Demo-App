@@ -1,13 +1,18 @@
 package com.example.demoapp.Adapters
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.demoapp.Fragments.FragmentDetail
 import com.example.demoapp.Network.Models.Product
 import com.example.demoapp.databinding.ProductListBinding
 
-class ProductAdapter(private val listData: List<Product>) :
+class ProductAdapter(
+    private var data: communication,
+    private val listData: List<Product>) :
     RecyclerView.Adapter<ProductAdapter.Holder>() {
 
     inner class Holder(val binding: ProductListBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -30,5 +35,13 @@ class ProductAdapter(private val listData: List<Product>) :
         holder.itemTitle.text = item.title
         Glide.with(holder.itemView).load(item.thumbnail).into(holder.itemImage)
         holder.itemSubtitle.text = item.description
+        holder.itemView.setOnClickListener {
+
+            data.passid(item.id)
+
+        }
+    }
+    interface communication{
+        fun passid(id:Int)
     }
 }

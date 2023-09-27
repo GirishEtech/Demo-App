@@ -55,7 +55,7 @@ dependencies {
     implementation ("com.google.dagger:hilt-android:$hilt_version")
     kapt ("com.google.dagger:hilt-compiler:$hilt_version")
 
-    val lifecycle_version = "2.5.0-beta01"
+    val lifecycle_version = "2.7.0-alpha02"
     implementation( "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
 
@@ -83,6 +83,10 @@ dependencies {
     // size Library Responsive
     implementation("com.intuit.ssp:ssp-android:1.1.0")
     implementation("com.intuit.sdp:sdp-android:1.1.0")
+
+    val fragment_ktx = "1.6.1"
+    implementation ("androidx.fragment:fragment-ktx:$fragment_ktx")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
 
 }
 kapt {

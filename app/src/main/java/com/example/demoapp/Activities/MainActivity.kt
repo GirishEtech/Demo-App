@@ -1,14 +1,18 @@
 package com.example.demoapp.Activities
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.activityViewModels
 import com.example.demoapp.Fragments.FragmentGallary
 import com.example.demoapp.Fragments.FragmentHome
 import com.example.demoapp.Fragments.FragmentTodo
+import com.example.demoapp.MyApplication
 import com.example.demoapp.R
+import com.example.demoapp.ViewModels.ProductviewModel
 import com.example.demoapp.databinding.ActivityMainBinding
 import com.google.android.material.appbar.MaterialToolbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,14 +20,17 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    private val sharedViewModel: ProductviewModel by viewModels()
     private lateinit var _binding: ActivityMainBinding
     private val binding: ActivityMainBinding
         get() = _binding
 
-    private var actionBar:MaterialToolbar?= null
+    private var actionBar: MaterialToolbar? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
+        (application as MyApplication).component.inject(this)
         setContentView(binding.root)
         initComponents()
     }
@@ -60,7 +67,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     private fun loadFragment(fragment: Fragment, tag: String) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragmentContainerView2, fragment, tag)
@@ -90,11 +96,14 @@ class MainActivity : AppCompatActivity() {
             if (fragment.tag.equals("HomeFragment")) {
                 hideFragment(transaction, "GalleryFragment")
                 hideFragment(transaction, "ToDoFragment")
+                hideFragment(transaction, "fragmentDetail")
             } else if (fragment.tag.equals("GalleryFragment")) {
                 hideFragment(transaction, "HomeFragment")
                 hideFragment(transaction, "ToDoFragment")
+                hideFragment(transaction, "fragmentDetail")
             } else if (fragment.tag.equals("ToDoFragment")) {
                 hideFragment(transaction, "HomeFragment")
+                hideFragment(transaction, "fragmentDetail")
                 hideFragment(transaction, "GalleryFragment")
             }
         }
