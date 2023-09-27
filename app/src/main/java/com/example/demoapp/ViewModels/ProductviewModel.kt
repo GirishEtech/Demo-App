@@ -10,6 +10,7 @@ import com.example.demoapp.Network.Models.Product
 import com.example.demoapp.Repository.productRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import retrofit2.http.Body
 import javax.inject.Inject
 
 
@@ -17,6 +18,7 @@ import javax.inject.Inject
 class ProductviewModel @Inject constructor(private val repository: productRepository) :
     ViewModel() {
 
+    val isLoading = MutableLiveData<Boolean>()
     val product: MutableLiveData<Any?>
         get() = repository.product
 
@@ -24,8 +26,10 @@ class ProductviewModel @Inject constructor(private val repository: productReposi
         get() = repository.prodcuts
 
     init {
+        isLoading.value = true
         viewModelScope.launch {
             repository.getAllproducts()
+            isLoading.value = false
         }
     }
 

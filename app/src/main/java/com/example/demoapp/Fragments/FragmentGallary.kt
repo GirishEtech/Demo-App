@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.demoapp.Adapters.GallaryAdapter
 import com.example.demoapp.MyApplication
+import com.example.demoapp.R
 import com.example.demoapp.Utils.Constans
 import com.example.demoapp.ViewModelFactory.gallaryViewmodelFactory
 import com.example.demoapp.ViewModels.GalleryViewmodel
@@ -18,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class FragmentGallary : Fragment() {
+class FragmentGallary : Fragment(), GallaryAdapter.communication {
 
     lateinit var viewModel: GalleryViewmodel
     lateinit var adapter: GallaryAdapter
@@ -42,15 +43,34 @@ class FragmentGallary : Fragment() {
 
     private fun initData() {
         try {
-            viewModel = ViewModelProvider(this, factory)[GalleryViewmodel::class.java]
-            viewModel.gallaryList.observe(viewLifecycleOwner) {
-                adapter = GallaryAdapter(it)
-                binding.gallaryList.adapter = adapter
 
+            viewModel = ViewModelProvider(this, factory)[GalleryViewmodel::class.java]
+            viewModel.isLoading.observe(viewLifecycleOwner) {
+                if (it) {
+                    binding.Loading.visibility = View.VISIBLE
+                } else {
+                    binding.Loading.visibility = View.INVISIBLE
+                }
+            }
+
+            viewModel.gallaryList.observe(viewLifecycleOwner) {
+                adapter = GallaryAdapter(this, it)
+                binding.gallaryList.adapter = adapter
             }
         } catch (ex: Exception) {
             Toast.makeText(requireContext(), "${ex.message}", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun passImage(image: String) {
+        val fragment = FragmentGallaryDetail()
+        val bundle = Bundle()
+        bundle.putString("imgUrl", image)
+        fragment.arguments = bundle
+        val transaction = requireActivity().supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragmentContainerView2, fragment, "fragmentGalleryDetail")
+        transaction.addToBackStack("fragmentGalleryDetail")
+        transaction.commit()
     }
 
 }

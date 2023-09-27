@@ -33,6 +33,15 @@ class FragmentHome : Fragment(),ProductAdapter.communication{
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        viewModel.isLoading.observe(viewLifecycleOwner){
+            if (it){
+                binding.loading.visibility = View.VISIBLE
+            }
+            else{
+                binding.loading.visibility = View.GONE
+            }
+        }
         viewModel.productList.observe(viewLifecycleOwner) {
             try {
                 Log.d(Constans.TAG, it.products.toString())
