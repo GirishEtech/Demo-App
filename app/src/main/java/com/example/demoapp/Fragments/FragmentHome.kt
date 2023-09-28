@@ -9,13 +9,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.example.demoapp.Activities.MainActivity
 import com.example.demoapp.Adapters.ProductAdapter
 import com.example.demoapp.MyApplication
 import com.example.demoapp.R
 import com.example.demoapp.Utils.Constans
 import com.example.demoapp.ViewModels.ProductviewModel
 import com.example.demoapp.databinding.FragmentHomeBinding
-import com.example.demoapp.di.DaggerFragmentComponent
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,7 +33,7 @@ class FragmentHome : Fragment(),ProductAdapter.communication{
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-
+        (activity as MainActivity).enableNavigation()
         viewModel.isLoading.observe(viewLifecycleOwner){
             if (it){
                 binding.loading.visibility = View.VISIBLE

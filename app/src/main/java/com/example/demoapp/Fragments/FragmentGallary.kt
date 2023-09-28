@@ -34,7 +34,7 @@ class FragmentGallary : Fragment(), GallaryAdapter.communication {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentGallaryBinding.inflate(inflater, container, false)
         (requireActivity().application as MyApplication).component.inject(requireActivity())
         initData()

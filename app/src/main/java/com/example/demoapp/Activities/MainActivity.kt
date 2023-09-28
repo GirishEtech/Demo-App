@@ -1,6 +1,7 @@
 package com.example.demoapp.Activities
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
@@ -116,6 +117,13 @@ class MainActivity : AppCompatActivity() {
             transaction.hide(fragment)
         }
     }
-
+     fun enableNavigation(){
+        binding.ButtomNavigation.visibility = View.VISIBLE
+         supportActionBar?.setHomeButtonEnabled(false)
+         supportActionBar?.setDisplayHomeAsUpEnabled(false)
+    }
+     fun disableNavigation(){
+        binding.ButtomNavigation.visibility = View.INVISIBLE
+    }
 
 }
