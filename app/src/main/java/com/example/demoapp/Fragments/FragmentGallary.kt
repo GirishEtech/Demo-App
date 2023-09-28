@@ -7,25 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import com.example.demoapp.Adapters.GallaryAdapter
 import com.example.demoapp.MyApplication
 import com.example.demoapp.R
-import com.example.demoapp.Utils.Constans
-import com.example.demoapp.ViewModelFactory.gallaryViewmodelFactory
 import com.example.demoapp.ViewModels.GalleryViewmodel
 import com.example.demoapp.databinding.FragmentGallaryBinding
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class FragmentGallary : Fragment(), GallaryAdapter.communication {
-
-    lateinit var viewModel: GalleryViewmodel
     lateinit var adapter: GallaryAdapter
 
-    @Inject
-    lateinit var factory: gallaryViewmodelFactory
+    val viewModel: GalleryViewmodel by activityViewModels()
+
 
     lateinit var _binding: FragmentGallaryBinding
     private val binding: FragmentGallaryBinding
@@ -44,7 +40,6 @@ class FragmentGallary : Fragment(), GallaryAdapter.communication {
     private fun initData() {
         try {
 
-            viewModel = ViewModelProvider(this, factory)[GalleryViewmodel::class.java]
             viewModel.isLoading.observe(viewLifecycleOwner) {
                 if (it) {
                     binding.Loading.visibility = View.VISIBLE

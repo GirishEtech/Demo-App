@@ -6,10 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.demoapp.Network.Models.GallaryRespose
 import com.example.demoapp.Repository.gallaryRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
+@HiltViewModel
 class GalleryViewmodel @Inject constructor(private val repository: gallaryRepository) :
     ViewModel() {
     val isLoading = MutableLiveData<Boolean>()
